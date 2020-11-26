@@ -1,7 +1,7 @@
 module Spree
   module Admin
     class CommissionsController < ResourceController
-      base.belongs_to 'spree/affiliate'
+      belongs_to 'spree/affiliate'
 
       def pay
         if @commission.mark_paid!
