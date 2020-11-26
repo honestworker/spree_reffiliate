@@ -1,10 +1,11 @@
 module Spree::OrderDecorator
-  include Spree::TransactionRegistrable
+  def self.prepended(base)
+    base.include Spree::TransactionRegistrable
+    base.has_many :transactions, as: :commissionable, class_name: 'Spree::CommissionTransaction', dependent: :restrict_with_error
+    base.belongs_to :affiliate, class_name: 'Spree::Affiliate'
 
-  has_many :transactions, as: :commissionable, class_name: 'Spree::CommissionTransaction', dependent: :restrict_with_error
-  belongs_to :affiliate, class_name: 'Spree::Affiliate'
-
-  state_machine.after_transition to: :complete, do: :create_commission_transaction
+    base.state_machine.after_transition to: :complete, do: :create_commission_transaction
+  end
 
   private
     def create_commission_transaction
