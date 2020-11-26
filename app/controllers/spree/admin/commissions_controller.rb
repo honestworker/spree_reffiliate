@@ -1,6 +1,6 @@
 module Spree::Admin::CommissionsController < ResourceController
   def self.prepended(base)
-    belongs_to 'spree/affiliate'
+    base.belongs_to 'spree/affiliate'
   end
 
   def pay

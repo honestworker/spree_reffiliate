@@ -1,8 +1,8 @@
 module Spree::Admin::AffiliatesControllerDecorator < ResourceController
   def self.prepended(base)
-    helper_method :affiliate_partial_exists?
-    before_action :layout_options, only: [:new, :create, :edit, :update]
-    before_action :build_or_load_affiliate_commission_rule, only: [:new, :edit]
+    base.helper_method :affiliate_partial_exists?
+    base.before_action :layout_options, only: [:new, :create, :edit, :update]
+    base.before_action :build_or_load_affiliate_commission_rule, only: [:new, :edit]
   end
 
   def index

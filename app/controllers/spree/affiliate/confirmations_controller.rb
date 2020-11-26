@@ -1,6 +1,6 @@
 module Spree::Affiliate::ConfirmationsControllerDecorator < Spree::UsersController
   def self.prepended(base)
-    prepend_before_action :load_object, :load_affiliate, only: [:new, :create]
+    base.prepend_before_action :load_object, :load_affiliate, only: [:new, :create]
   end
 
   def new

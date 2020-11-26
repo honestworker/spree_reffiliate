@@ -1,6 +1,6 @@
 module Spree::Admin::ReferralSettingsController < ResourceController
   def self.prepended(base)
-    before_action :check_credit_amount, only: :update
+    base.before_action :check_credit_amount, only: :update
   end
 
   def update

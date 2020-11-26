@@ -1,7 +1,7 @@
 module Spree::UsersControllerDecorator
   def self.prepended(base)
-    prepend_before_action :affiliate_user, only: :update
-    before_action :load_referred_records, only: :referral_details
+    base.prepend_before_action :affiliate_user, only: :update
+    base.before_action :load_referred_records, only: :referral_details
   end
 
   def referral_details
