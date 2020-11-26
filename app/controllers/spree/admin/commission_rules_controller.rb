@@ -1,6 +1,4 @@
-module Spree
-  module Admin
-    class CommissionRulesController < ResourceController
-    end
-  end
+module Spree::Admin::CommissionRulesController < ResourceController
 end
+
+Spree::Admin::CommissionRulesController.prepend Spree::Admin::CommissionRulesControllerDecorator

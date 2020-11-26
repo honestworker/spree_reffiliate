@@ -1,7 +1,8 @@
-Spree::UsersController.class_eval do
-
-  prepend_before_action :affiliate_user, only: :update
-  before_action :load_referred_records, only: :referral_details
+module Spree::UsersControllerDecorator
+  def self.prepended(base)
+    prepend_before_action :affiliate_user, only: :update
+    before_action :load_referred_records, only: :referral_details
+  end
 
   def referral_details
   end
@@ -30,3 +31,5 @@ Spree::UsersController.class_eval do
                             page(params[:page]).per(params[:per_page] || Spree::Config[:referred_records_per_page])
     end
 end
+
+Spree::UsersController.prepend Spree::UsersControllerDecorator
