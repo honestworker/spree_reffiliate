@@ -21,5 +21,3 @@ module Spree
     end
   end
 end
-
-Spree::Admin::ReferralSettingsController.prepend Spree::Admin::ReferralSettingsControllerDecorator
