@@ -1,4 +1,4 @@
-Spree::User.class_eval do
+module Spree::UserDecorator
   include Spree::TransactionRegistrable
   attr_accessor :referral_code, :affiliate_code, :can_activate_associated_partner
 
@@ -96,3 +96,5 @@ Spree::User.class_eval do
       @store_credit_category ||= Spree::StoreCreditCategory.find_or_create_by(name: Spree::StoreCredit::REFERRAL_STORE_CREDIT_CATEGORY)
     end
 end
+
+Spree::User.prepend Spree::UserDecorator

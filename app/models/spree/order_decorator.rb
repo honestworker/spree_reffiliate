@@ -1,4 +1,4 @@
-Spree::Order.class_eval do
+module Spree::OrderDecorator
   include Spree::TransactionRegistrable
 
   has_many :transactions, as: :commissionable, class_name: 'Spree::CommissionTransaction', dependent: :restrict_with_error
@@ -11,3 +11,5 @@ Spree::Order.class_eval do
       register_commission_transaction(affiliate) if affiliate.present?
     end
 end
+
+Spree::Order.prepend Spree::OrderDecorator

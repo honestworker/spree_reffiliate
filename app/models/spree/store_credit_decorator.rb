@@ -1,4 +1,4 @@
-Spree::StoreCredit.class_eval do
+module Spree::StoreCreditDecorator
   Spree::StoreCredit::REFERRAL_STORE_CREDIT_CATEGORY = 'Referral Credit'
 
   has_one :referred_record
@@ -14,3 +14,5 @@ Spree::StoreCredit.class_eval do
       Spree::ReferralMailer.credits_awarded(user, amount.to_f).deliver_later
     end
 end
+
+Spree::StoreCredit.prepend Spree::StoreCreditDecorator
